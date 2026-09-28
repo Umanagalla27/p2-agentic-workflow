@@ -1,0 +1,8 @@
+{
+  "total_scenarios": 50,
+  "triage_accuracy": 100.0,
+  "hitl_trigger_accuracy": 100.0,
+  "injection_block_rate": 100.0,
+  "task_success_rate": 100.0,
+  "duration_seconds": 0.65
+}
