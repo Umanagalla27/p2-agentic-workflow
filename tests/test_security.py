@@ -56,15 +56,11 @@ def test_quarantine_malicious_ticket_in_graph():
 def test_least_privilege_tool_enforcement():
     # Research agent shouldn't have access to modify tickets
     assert (
-        EnterpriseGuardrails.validate_tool_permission(
-            "research_agent", "modify_ticket_priority"
-        )
+        EnterpriseGuardrails.validate_tool_permission("research_agent", "modify_ticket_priority")
         is False
     )
     # Action agent should have it
     assert (
-        EnterpriseGuardrails.validate_tool_permission(
-            "action_agent", "modify_ticket_priority"
-        )
+        EnterpriseGuardrails.validate_tool_permission("action_agent", "modify_ticket_priority")
         is True
     )

@@ -1,4 +1,5 @@
 from typing import Any
+
 from pydantic import BaseModel, Field
 
 # In-memory mock database for the helpdesk system
@@ -35,14 +36,18 @@ def query_knowledge_base(query: str) -> str:
     if "access" in lowered or "database" in lowered:
         return (
             "[Policy SOP-401] Access Control: Production database read access requires "
-            "written authorization from an Engineering Director and Multi-Factor Authentication (MFA) validation."
+            "written authorization from an Engineering Director and Multi-Factor "
+            "Authentication (MFA) validation."
         )
     if "hardware" in lowered or "laptop" in lowered:
         return (
             "[Policy SOP-202] Hardware: Equipment failures must be reported within 24 hours. "
             "Temporary loaner laptops can be issued by IT Support on Floor 3."
         )
-    return "[Policy SOP-100] General IT: For unresolved issues, escalate to Tier-2 engineering support."
+    return (
+        "[Policy SOP-100] General IT: For unresolved issues, escalate to "
+        "Tier-2 engineering support."
+    )
 
 
 def update_ticket_status(ticket_id: str, new_priority: str, note: str) -> dict[str, Any]:

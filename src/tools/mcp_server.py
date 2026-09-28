@@ -1,4 +1,3 @@
-import asyncio
 import sys
 from pathlib import Path
 
@@ -6,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from mcp.server.fastmcp import FastMCP
+
 from src.tools.ticket_tools import (
     get_user_ticket_history,
     query_knowledge_base,

@@ -7,12 +7,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import interrupt
+
 from src.security.guardrails import EnterpriseGuardrails
 from src.state import (
     ActionExecution,
     AgentWorkflowState,
     ResearchFinding,
-    TicketInput,
     TriageAssessment,
 )
 from src.tools.ticket_tools import query_knowledge_base, update_ticket_status
@@ -30,7 +30,9 @@ def security_guardrail_node(state: AgentWorkflowState) -> dict:
         return {
             "security_flagged": True,
             "review_status": "escalated",
-            "resolution_notes": f"QUARANTINED: Prompt injection detected ({scan.detected_threats[0]})",
+            "resolution_notes": (
+                f"QUARANTINED: Prompt injection detected ({scan.detected_threats[0]})"
+            ),
         }
 
     # Update ticket description with sanitized (PII-redacted) text
